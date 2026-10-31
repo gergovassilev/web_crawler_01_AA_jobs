@@ -1,2 +1,7 @@
-local_files/
+# local_files/ # some local files will be uploaded to git
 documentation/minor_fixes_and_personal/
+
+# the databases
+local_files/databases/
+# the settings
+local_files/settings/
