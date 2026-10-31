@@ -25,12 +25,13 @@ docker ps -a
 Create new docker container. Some settings are set up when creating the container. Settings can also be added later, but in some cases this would require to save the Docker container as image and then create new container. So the ports and the folders are set at the container creation with:
 ``` bash
 docker run -it -d --name web_crawler01 \
-    -p 127.0.128.129:8080:80 \
+    -p 127.0.0.1:8080:80 \
     -v /home/gergo/gitrepos/web_crawler_01_AA_jobs/local_files/databases:/crawler_dbs \
     -v /home/gergo/gitrepos/web_crawler_01_AA_jobs/local_files/www:/var/www/html \
     -v /home/gergo/gitrepos/web_crawler_01_AA_jobs/local_files/settings:/crawler_settings \
     debian
 ```
+
 
 
 connect to the container
