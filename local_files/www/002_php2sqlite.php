@@ -1,7 +1,10 @@
 <?php
+# test connection using the php sqlite module
+# example
+# http://127.0.0.1:8080/002_php2sqlite.php
 echo '<pre>';
 try {
-    $pdo = new PDO('sqlite:test01.db');
+    $pdo = new PDO('sqlite:/crawler_dbs/test01.db');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "successfuly connected to DB";
 

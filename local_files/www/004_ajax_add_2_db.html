@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test page to add entries to database</title>
+</head>
+<body>
+    
+<button> placeholder </button>
+
+<script>
+
+
+// Unsichere Benutzereingaben
+const userInputName = "Max Mustermann & Co.";
+const userInputPayload = "<script>alert('xss')<\/script>";
+
+// Parameter-Objekt erstellen
+const params = new URLSearchParams();
+params.append('name', userInputName);
+params.append('payload', userInputPayload);
+
+// Die fertige, sicher kodierte Query-String generieren
+const queryString = params.toString(); 
+// Ergebnis: name=Max+Mustermann+%26+Co.&payload=%3Cscript%3Ealert%28%27xss%27%29%3C%2Fscript%3E
+
+// AJAX-Anfrage senden (Beispiel mit fetch)
+fetch(`003_add_entries_2_db.php?${queryString}`)
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+
+
+
+</script>
+
+
+
+<script>
+/* 
+// the old way
+
+const name = "Max & Moritz";
+const age = 30;
+
+// Jeder Wert MUSS einzeln kodiert werden, nicht die ganze URL!
+const safeName = encodeURIComponent(name);
+const safeAge = encodeURIComponent(age);
+
+const url = `api.php?name=${safeName}&age=${safeAge}`;
+
+// AJAX absenden...
+*/
+</script>
+
+</body>
+</html>
