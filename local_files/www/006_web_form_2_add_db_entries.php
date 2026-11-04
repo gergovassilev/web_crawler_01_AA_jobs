@@ -9,6 +9,7 @@ if (!empty($_GET['company']) && !empty($_GET['title']) && !empty($_GET['city']))
 $company   = $_GET['company']; 
 $title     = $_GET['title'];
 $city      = $_GET['city'];
+$rec_url      = $_GET['rec_url'];
 $published = ($_GET['published'] ?? '') ?: date('Y-m-d H:i:s');
 
 
@@ -28,6 +29,7 @@ $published = ($_GET['published'] ?? '') ?: date('Y-m-d H:i:s');
 $safe_company   = str_replace("'", "''",$company);    
 $safe_title     = str_replace("'", "''",$title);
 $safe_city      = str_replace("'", "''",$city);
+$safe_rec_url      = str_replace("'", "''",$rec_url);
 $safe_published = str_replace("'", "''",$published); 
 
 
@@ -36,7 +38,7 @@ echo "adding $safe_name to the database";
 
 
 //  Build the SQL statement
-$sql = "INSERT INTO jobs (company, title, location, first_seen) VALUES ('$safe_company', '$safe_title', '$safe_city', '$safe_published');";
+$sql = "INSERT INTO jobs (company, title, location, url, first_seen) VALUES ('$safe_company', '$safe_title', '$safe_city', '$safe_rec_url', '$safe_published');";
 
 
 
@@ -79,6 +81,11 @@ endif;
         <div class="form-group">
             <label for="city">Location:</label>
             <input type="text" id="city" name="city" placeholder="Essen">
+        </div>
+
+        <div class="form-group">
+            <label for="URL">URL:</label>
+            <input type="text" id="rec_url" name="rec_url" placeholder="Essen">
         </div>
 
         <div class="form-group">
